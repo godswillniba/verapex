@@ -129,7 +129,7 @@ export const authStateListener = (callback: (user: User | null) => void) => {
 // Session management
 export const setSessionTimeout = (timeout: number = 30) => {
   const timeoutMinutes = timeout * 60 * 1000; // Convert to milliseconds
-  let sessionTimer: NodeJS.Timeout;
+  let sessionTimer: ReturnType<typeof setTimeout>;
 
   const resetTimer = () => {
     clearTimeout(sessionTimer);
