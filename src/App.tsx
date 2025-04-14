@@ -14,10 +14,10 @@ import ChatBox from "./components/ChatBox";
 import KYCVerification from "./pages/kyc/KYCVerification";
 import { getUserProfileData } from "../firebase/firestore";
 import InitialDeposit from "./components/InitialDeposit";
-  import MobilePurchases from "./components/market/MobilePurchases";
+import MobilePurchases from "./components/market/MobilePurchases";
 
 // Root level authentication checker
-const AuthenticationChecker = ({ children }: { children: React.ReactNode }) => {
+const AuthenticationChecker = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const location = useLocation();
   const [authChecked, setAuthChecked] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,11 +47,11 @@ const AuthenticationChecker = ({ children }: { children: React.ReactNode }) => {
     return <Navigate to="/finance" replace />;
   }
 
-  return children;
+  return <>{children}</>;
 };
 
 // Regular authentication check
-const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+const PrivateRoute = ({ children }: { children: JSX.Element }): JSX.Element => {
   const [authChecked, setAuthChecked] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -83,7 +83,7 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 };
 
 // KYC verification check for protected finance routes
-const KYCProtectedRoute = ({ children }: { children: JSX.Element }) => {
+const KYCProtectedRoute = ({ children }: { children: JSX.Element }): JSX.Element => {
   const [authChecked, setAuthChecked] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isProfileVerified, setIsProfileVerified] = useState(false);
@@ -179,13 +179,13 @@ export default function App(): JSX.Element {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route 
-  path="/initial-deposit" 
-  element={
-    <KYCProtectedRoute>
-      <InitialDeposit />
-    </KYCProtectedRoute>
-  } 
-/>
+                path="/initial-deposit" 
+                element={
+                  <KYCProtectedRoute>
+                    <InitialDeposit />
+                  </KYCProtectedRoute>
+                } 
+              />
               <Route path="/start" element={<LandingPage />} />
               <Route
                 path="/login"
@@ -204,8 +204,6 @@ export default function App(): JSX.Element {
                 }
               />
               <Route path="/dash" element={<FinaceAppMock />} />
-
-
               <Route path="/market" element={<MobilePurchases />} />
               <Route
                 path="/finance"
