@@ -17,7 +17,7 @@ import InitialDeposit from "./components/InitialDeposit";
   import MobilePurchases from "./components/market/MobilePurchases";
 
 // Root level authentication checker
-const AuthenticationChecker = ({ children }) => {
+const AuthenticationChecker = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const [authChecked, setAuthChecked] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -205,7 +205,7 @@ export default function App(): JSX.Element {
               />
               <Route path="/dash" element={<FinaceAppMock />} />
 
-              
+
               <Route path="/market" element={<MobilePurchases />} />
               <Route
                 path="/finance"

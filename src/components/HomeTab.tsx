@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -21,7 +20,7 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
   const [userData, setUserData] = useState<DocumentData | null>(null);
   const [loading, setLoading] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -101,15 +100,15 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
   return (
     <div className="home-tab">
       <div className="user-name">
-        {userData.name}
-        <p style={{ fontSize: '10px', color:'grey'}}>{userData.uid}</p>
+        {userData?.name}
+        <p style={{ fontSize: '10px', color:'grey'}}>{userData?.uid}</p>
       </div>
 
       <div className="balance-section">
         <div className="section-title">Total Balance</div>
         <div className="total-balance-card">
           <div className="balance-amount">
-            {formatAmount(userData.balance.total)}&nbsp;{userData.currency}
+            {formatAmount(userData?.balance?.total ?? 0)}&nbsp;{userData?.currency}
             <button onClick={toggleBalance} className="balance-toggle">
               {showBalance ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -126,7 +125,7 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
           </div>
         </div>
         <div className="locked-balance">
-          <span>Locked Funds: {formatAmount(userData.balance.lockedAmounts)} {userData.currency}</span>
+          <span>Locked Funds: {formatAmount(userData?.balance?.lockedAmounts ?? 0)} {userData?.currency}</span>
           <div className="tooltip-container">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
@@ -154,12 +153,12 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
       <div className="two-column-grid">
         <div className="green-card">
           <div className="card-title">Referrals</div>
-          <div className="card-amount">{formatAmount(userData.earnings.referrals)}</div>
+          <div className="card-amount">{formatAmount(userData?.earnings?.referrals ?? 0)}</div>
           <div className="referral-count">
 
             <button className="fa-pple-btn">
-            <span>{showBalance ? userData.referrals.count : '(•_•)'}</span>&nbsp;
-            
+            <span>{showBalance ? userData?.referrals?.count ?? 0 : '(•_•)'}</span>&nbsp;
+
               <FontAwesomeIcon icon={faPeopleArrows} />
             </button>
           </div>
@@ -167,14 +166,14 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
 
         <div className="green-card">
           <div className="card-title">Task Earnings</div>
-          <div className="card-amount">{formatAmount(userData.earnings.tasks)}</div>
+          <div className="card-amount">{formatAmount(userData?.earnings?.tasks ?? 0)}</div>
         </div>
       </div>
 
       <div className="two-column-grid">
         <div className="green-card">
           <div className="card-title">Available Balance</div>
-          <div className="card-amount">{formatAmount(userData.balance.withdrawable)}</div>
+          <div className="card-amount">{formatAmount(userData?.balance?.withdrawable ?? 0)}</div>
         </div>
 
         <div className="dark-card transaction-card">
@@ -184,7 +183,7 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
               className="transaction-icon" 
             /><div className="transaction-text">Transac..</div>
           </button>
-          
+
         </div>
       </div>
       <div 
@@ -204,7 +203,7 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
           }}
         />
       </div>
-    
+
 
       <div className="graph-card">
         <div className="graph-container">
@@ -237,8 +236,8 @@ const HomeTab: React.FC<HomeTabProps> = ({ data, showBalance, setShowBalance }) 
       <div className="market-trackers">
         <CryptoTracker />
         <StockTracker />
-        
-        
+
+
       </div>
     </div>
   );

@@ -277,7 +277,7 @@ const FinanceApp: React.FC = () => {
 
         <div className="notifications-sheet-content">
           {userData?.notifications?.items?.length > 0 ? (
-            userData.notifications.items.map((notification, index) => (
+            userData.notifications.items.map((notification: { message: string; timestamp: Date }, index: number) => (
               <div key={index} className="notification-item">
                 <div className="notification-text">{notification.message}</div>
                 <div className="notification-date">{notification.date}</div>
@@ -386,7 +386,7 @@ const FinanceApp: React.FC = () => {
         onClose={() => setIsDepositSheetOpen(false)}
         title="Make a Deposit"
       >
-        
+
       </BottomSheet>
       <ToastContainer />
     </div>
