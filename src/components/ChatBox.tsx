@@ -11,7 +11,7 @@ const ChatBox = () => {
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let closeTimer: NodeJS.Timeout;
+    let closeTimer: ReturnType<typeof setTimeout>;
     let touchStartY = 0;
     
     if (isOpen) {
