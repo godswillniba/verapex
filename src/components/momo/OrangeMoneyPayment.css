@@ -1,0 +1,108 @@
+.orange-money-container {
+  background-color: #222222;
+  border-radius: 16px;
+  padding: 24px;
+  color: white;
+  font-family: Arial, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.orange-money-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.payment-details {
+  background-color: #3a4168;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.detail-row {
+  display: flex;
+  border-bottom: 1px solid #4a5178;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  padding: 16px;
+  width: 35%;
+  font-weight: bold;
+  border-right: 1px solid #4a5178;
+}
+
+.detail-value {
+  padding: 16px;
+  width: 65%;
+}
+
+.payment-instructions {
+  margin-bottom: 24px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.upload-container {
+  margin-bottom: 24px;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed white;
+  border-radius: 16px;
+  padding: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.upload-icon {
+  margin-bottom: 16px;
+}
+
+.upload-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.file-input {
+  display: none;
+}
+
+.submit-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 12px;
+  cursor: pointer;
+  background-color: transparent;
+
+  
+  
+  text-align: center;
+}
+.submit-btn:disabled{
+  color: #adadad;
+}
+
+

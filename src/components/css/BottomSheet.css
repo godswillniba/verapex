@@ -1,0 +1,106 @@
+
+.bottom-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bottom-sheet {
+  background-color: #ffffff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 100%;
+  max-height: 80vh;
+  padding: 20px;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  overflow: hidden; /* Important to contain the pseudo-element */
+}
+
+.bottom-sheet-overlay.closing .bottom-sheet {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+.bottom-sheet-overlay.closing {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+.bottom-sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('patterns/mosaic-swimming-pool-tile-pattern.png'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2; /* Adjust transparency */
+  z-index: 0;
+}
+
+.bottom-sheet > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bottom-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
+}
+
+.bottom-sheet-header h3 {
+  color: #001319;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 8px;
+  font-weight: bold;
+  
+}
+
+.bottom-sheet-content {
+  overflow-y: auto;
+  max-height: calc(80vh - 80px);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

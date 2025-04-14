@@ -1,0 +1,155 @@
+Your Financial Summary
+{
+  "uid": "nr7vEUelqwWxwtrHXiZgsHCOll52",
+  "tasks": [
+    {
+      "isTaskCompleted": false,
+      "id": 1,
+      "description": "Complete this task by logging in daily to earn rewards.",
+      "completedAt": null,
+      "reward": 50,
+      "status": "available",
+      "completionCount": 0,
+      "title": "Daily Login"
+    },
+    {
+      "isTaskCompleted": false,
+      "status": "available",
+      "id": 2,
+      "completionCount": 0,
+      "title": "Refer a Friend",
+      "reward": 100,
+      "description": "Invite a friend to join CM Invest and earn commission.",
+      "completedAt": null
+    },
+    {
+      "title": "Complete Profile",
+      "description": "Update your profile information to earn a one-time bonus.",
+      "status": "available",
+      "reward": 200,
+      "completedAt": null,
+      "id": 3,
+      "isTaskCompleted": false,
+      "completionCount": 0
+    },
+    {
+      "description": "Watch the platform tutorial video to understand how CM Invest works.",
+      "completedAt": null,
+      "id": 4,
+      "isTaskCompleted": false,
+      "status": "available",
+      "reward": 75,
+      "title": "Watch Tutorial",
+      "completionCount": 0
+    },
+    {
+      "completionCount": 1,
+      "isTaskCompleted": true,
+      "title": "First Deposit",
+      "completedAt": "2025-03-29T12:16:58.730242",
+      "id": 5,
+      "reward": 300,
+      "description": "Make your first deposit to activate your investment account.",
+      "status": "available"
+    }
+  ],
+  "currency": "XAF",
+  "status": "active",
+  "isProfileVerified": false,
+  "phone": "+237678543812",
+  "transactions": [
+    {
+      "phoneNumber": "670113464",
+      "transaction_id": "ef6bf03a-89af-4884-a1e3-93326eac30a3",
+      "currency": "EUR",
+      "paymentMethod": "mobile_money",
+      "timestamp": "2025-03-29T12:16:58.462765",
+      "reference": "c090d665-b524-4a14-a93a-2de1b61078d9",
+      "type": "deposit",
+      "amount": 3500,
+      "status": "SUCCESSFUL",
+      "paymentProvider": "MTN"
+    },
+    {
+      "transaction_id": "comm-75788312-d5f3-4bab-a6ef-91ec5b0f263a",
+      "status": "SUCCESSFUL",
+      "currency": "EUR",
+      "reference": "Commission from referral DSLzw2XTqWSCZT46KmIZQKrDYYc2",
+      "paymentMethod": "referral_bonus",
+      "timestamp": "2025-03-29T14:46:02.386756",
+      "amount": 1500,
+      "type": "referral_commission"
+    },
+    {
+      "currency": "EUR",
+      "type": "referral_commission",
+      "transaction_id": "comm-2346877c-2312-45f9-acd5-841d8b73fbff",
+      "status": "SUCCESSFUL",
+      "timestamp": "2025-03-29T15:08:09.801685",
+      "paymentMethod": "referral_bonus",
+      "amount": 1500,
+      "reference": "Commission from referral bvlY1fSi05YyFgddcVPdWUQKHcH2"
+    }
+  ],
+  "referrals": {
+    "recentRefers": [
+      "DSLzw2XTqWSCZT46KmIZQKrDYYc2",
+      "bvlY1fSi05YyFgddcVPdWUQKHcH2"
+    ],
+    "code": "CHECB",
+    "count": 2,
+    "link": "https://cmrinvest.com?ref=CHECB"
+  },
+  "earnings": {
+    "referrals": 3000,
+    "tasks": 300
+  },
+  "email": "b@gmail.com",
+  "notifications": {
+    "items": [],
+    "count": 0
+  },
+  "investments": {
+    "expectedReturns": 0,
+    "availableInvestmentPlans": [
+      {
+        "name": "Basic Plan",
+        "duration": "30 days",
+        "minAmount": 50000,
+        "roi": 0.15,
+        "id": "basic"
+      },
+      {
+        "id": "standard",
+        "duration": "60 days",
+        "name": "Standard Plan",
+        "minAmount": 100000,
+        "roi": 0.35
+      },
+      {
+        "minAmount": 500000,
+        "id": "premium",
+        "duration": "90 days",
+        "roi": 0.75,
+        "name": "Premium Plan"
+      }
+    ],
+    "activePlans": [],
+    "totalInvested": 0
+  },
+  "createdAt": {
+    "seconds": 1743250505,
+    "nanoseconds": 123000000
+  },
+  "profileImage": "/userImage/defaultProfile.webp",
+  "isEmailVerified": false,
+  "name": "NIBA GODSWILL ",
+  "balance": {
+    "withdrawable": 3570000,
+    "lockedAmounts": 0,
+    "total": 8767893
+  },
+  "referrerId": "",
+  "isFirstDepositCompleted": true,
+  "graphData": []
+}

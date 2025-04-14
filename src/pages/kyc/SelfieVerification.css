@@ -1,0 +1,183 @@
+/* Selfie Verification Styles */
+.selfie-verification-container {
+  background-color: black;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  width: 80%;
+  max-width: 28rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+
+.progress-dot.completed {
+  background-color: white;
+  border-color: white;
+}
+
+.progress-line {
+  flex-grow: 1;
+  height: 0.5rem;
+  background-color: white;
+  border-radius: -35px;
+}
+
+/* Text Sections */
+.selfie-text {
+  text-align: center;
+  color: white;
+}
+
+.selfie-text h1 {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.selfie-text .align-face {
+  color: #e8dfff;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.selfie-text .instruction {
+  color: #white;
+  font-size: 0.8rem;
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+/* Camera Container */
+.camera-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
+  margin: 1rem 0;
+}
+
+.camera-video,
+.captured-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+}
+
+.camera-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+/* Buttons */
+.submit-button {
+  background-color: #0EA5E9;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 10px;
+}
+
+.submit-button:active {
+  transform: scale(0.95);
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.nav-button {
+  background-color: #0EA5E9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.nav-button.back {
+  background-color: #757575;
+}
+
+.nav-button.submit {
+  background-color: #0EA5E9; /* Changed to match new primary color */
+}
+
+.capture-button {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.capture-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.capture-button.retake {
+  background-color: #475569;
+  color: white;
+  font-weight: bold;
+}
+
+.capture-button:not(.retake) {
+  background-color: white;
+  border: 4px solid black;
+}
+
+.capture-button-inner {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.hidden {
+  display: none;
+}

@@ -1,0 +1,472 @@
+/* LandingPage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Playpen Sans', cursive;
+}
+
+@keyframes raindrop {
+  0% {
+    transform: translateY(-20vh);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(50vh);
+    opacity: 0;
+  }
+}
+
+.rain-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.raindrop {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  animation: raindrop 3s linear infinite;
+}
+
+@keyframes flipReveal {
+  0% {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes bumpText {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.main-heading {
+  opacity: 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  animation: flipReveal 0.5s ease-out forwards;
+}
+
+.tagline {
+  opacity: 0;
+  animation: bumpText 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.7s forwards;
+}
+
+.main-heading span, .tagline span {
+  display: inline-block;
+}
+
+.landing-container {
+  background-color: #000000;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Money bag illustration */
+@keyframes riseUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.illustration-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  margin-top: 60px;
+  opacity: 0;
+  animation: riseUp 1s ease forwards 0.5s;
+}
+
+.money-bag-illustration {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(20px);
+  margin: -30px 0;
+}
+
+.floating-coin {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.coin-1 {
+  width: 50px;
+  height: 50px;
+  top: 50%;
+  right: 15px;
+  animation-delay: 0s;
+}
+
+.coin-2 {
+  width: 30px;
+  height: 30px;
+  bottom: 20%;
+  left: 15px;
+  animation-delay: 0.5s;
+}
+
+.coin-3 {
+  width: 20px;
+  height: 20px;
+  top: 20%;
+  left: 30px;
+  animation-delay: 1s;
+}
+
+.coin-4 {
+  width: 20px;
+  height: 20px;
+  top: 30%;
+  right: 30px;
+  animation-delay: 1.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.money-bag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.max-width-svg-image {
+  position: absolute;
+  top: 330px;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+/* Text content */
+.text-content {
+  text-align: left;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.main-heading, .main-heading br {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #CCCCCC;
+  line-height: 1.4;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  opacity: 0;
+  animation: riseUp 1s ease forwards 1.2s;
+}
+
+.primary-button {
+  background-color: #40CFA0;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 60%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
+}
+
+.primary-button:hover {
+  background-color: #35B088;
+}
+
+.divider {
+  margin: 10px 0;
+  color: #CCCCCC;
+}
+
+.secondary-button {
+  color: white;
+  text-decoration: underline;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Landscape mode for mobile phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .landing-container {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .content-wrapper {
+    max-width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .illustration-container {
+    flex: 0 0 40%;
+    margin: 0;
+    order: 2;
+  }
+
+  .money-bag-illustration {
+    width: 180px;
+    height: 180px;
+    transform: none;
+    margin: 0;
+  }
+
+  .text-content {
+    flex: 0 0 50%;
+    order: 1;
+    margin: 0;
+  }
+
+  .action-buttons {
+    flex: 0 0 100%;
+    order: 3;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .primary-button {
+    margin-bottom: 0;
+    width: auto;
+    padding: 12px 30px;
+  }
+
+  .max-width-svg-image {
+    top: auto;
+    bottom: 0;
+  }
+
+  .floating-coin {
+    transform: scale(0.7);
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+  .content-wrapper {
+    max-width: 700px;
+  }
+
+  .main-heading {
+    font-size: 2.2rem;
+  }
+
+  .tagline {
+    font-size: 1.4rem;
+  }
+
+  .money-bag-illustration {
+    width: 400px;
+    height: 400px;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .primary-button {
+    margin-bottom: 0;
+    width: auto;
+    padding: 15px 40px;
+  }
+
+  .secondary-button {
+    margin-top: 0;
+  }
+
+  .divider {
+    display: none;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1200px) {
+  .landing-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 50px;
+  }
+
+  .content-wrapper {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "text illustration"
+      "buttons illustration";
+    gap: 40px;
+    padding: 40px;
+    align-items: center;
+  }
+
+  .illustration-container {
+    grid-area: illustration;
+    margin: 0;
+    justify-self: center;
+  }
+
+  .money-bag-illustration {
+    width: 450px;
+    height: 450px;
+  }
+
+  .text-content {
+    grid-area: text;
+    margin: 0;
+  }
+
+  .main-heading {
+    font-size: 2.8rem;
+  }
+
+  .tagline {
+    font-size: 1.6rem;
+    margin-top: 20px;
+  }
+
+  .action-buttons {
+    grid-area: buttons;
+    justify-content: start;
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .max-width-svg-image {
+    height: 400px;
+  }
+
+  .floating-coin {
+    transform: scale(1.2);
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+  .content-wrapper {
+    max-width: 1400px;
+  }
+
+  .money-bag-illustration {
+    width: 500px;
+    height: 500px;
+  }
+
+  .main-heading {
+    font-size: 3.2rem;
+  }
+
+  .tagline {
+    font-size: 1.8rem;
+  }
+
+  .primary-button {
+    font-size: 1.4rem;
+    padding: 18px 50px;
+  }
+
+  .secondary-button {
+    font-size: 1.4rem;
+  }
+}

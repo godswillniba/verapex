@@ -1,0 +1,112 @@
+.review-container {
+  background-color: #20293B; /* Dark background */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.review-content {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.review-content h1 {
+  color: #FFFFFF; /* White text */
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+
+.preview-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.preview-item {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.preview-item h3 {
+  color: #FFFFFF; /* White text */
+  margin-bottom: 1rem;
+}
+
+.preview-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.navigation-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.nav-button {
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.nav-button.back {
+  background-color: transparent;
+  border: 2px solid #64748B;
+  color: #64748B;
+}
+
+.nav-button.submit {
+  background-color: #0EA5E9;
+  color: white;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Progress Indicator Styles */
+.progress-indicator {
+  width: 80%;
+  max-width: 28rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-dot {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+
+.progress-dot.completed {
+  background-color: white;
+  border-color: white;
+}
+
+.progress-line {
+  flex-grow: 1;
+  height: 0.5rem;
+  background-color: white;
+  opacity: 0.3;
+}
+
+.progress-line.completed {
+  opacity: 1;
+}

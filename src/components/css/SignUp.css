@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playpen Sans', cursive;
+  background-color: #090909;
+  color: white;
+}
+
+.signup-container {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  background-color: #090909;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Media query for desktop */
+@media screen and (min-width: 1024px) {
+  .signup-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: center;
+    padding: 20px;
+    gap: 40px;
+  }
+
+  .signup-content-wrapper {
+    justify-self: start;
+    width: 100%;
+    max-width: 580px;
+    padding: 60px 40px;
+    margin: 0;
+    background: rgba(9, 9, 9, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    min-height: auto;
+  }
+
+  .signup-image-container {
+    display: block;
+    justify-self: end;
+    width: 100%;
+    max-width: 600px;
+    height: 600px;
+    background: url('/IMG_3668.webp') center/contain no-repeat;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+/* Media query for large desktop */
+@media screen and (min-width: 1440px) {
+  .signup-content-wrapper {
+    max-width: 680px;
+    padding: 100px 80px;
+  }
+}
+
+.create-account-container::before,
+.create-account-container::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgba(30, 60, 40, 0.1);
+  z-index: 0;
+}
+
+.signup-container::before {
+  top: -50px;
+  right: -50px;
+}
+
+.signup-container::after {
+  bottom: -80px;
+  left: -80px;
+}
+
+.signup-content-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.signup-header-section {
+  padding: 20px 0 40px 0;
+}
+
+.signup-error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+.signup-terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.signup-terms-checkbox input {
+  margin-top: 4px;
+  transform: scale(1.2);
+}
+
+.signup-terms-link {
+  color: #76D343;
+  text-decoration: underline;
+}
+
+.signup-terms-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.signup-terms-section a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.signup-title {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.signup-subtitle {
+  font-size: 0.87rem;
+  line-height: 1.4;
+  opacity: 1;
+  max-width: 360px;
+}
+
+.signup-form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+}
+
+.signup-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+}
+
+.signup-input-group label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.signup-form-input {
+  width: 100%;
+  padding: 10px 15px; 
+  height: 42px; 
+  border-radius: 50px;
+  border: none;
+  background-color: #90BE56;
+  color: #000;
+  font-family: 'Playpen Sans', cursive;
+  font-size: 1.1rem; 
+  line-height: 1; 
+}
+
+.signup-form-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+.signup-phone-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signup-country-code {
+  position: absolute;
+  left: 15px;
+  color: #000;
+  font-family: 'Playpen Sans', cursive;
+  font-size: 1.1rem; 
+  z-index: 2;
+  line-height: 1;
+}
+
+.signup-phone-input {
+  padding-left: 60px;
+}
+
+
+.signup-next-button {
+  background-color: #40CFA0;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 60%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.signup-next-button:hover {
+  background-color: #35B088;
+}
+
+.signup-terms-section {
+  margin-top: auto;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 1.1rem;
+}
+
+.signup-terms-section a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  font-family: 'Playpen Sans', cursive;
+}
+
+.signup-terms-section a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .content-wrapper {
+    padding: 60px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* Add this to your existing CreateAccount.css file */
+
+/* Add these styles to your existing CreateAccount.css file */
+
+.signup-back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #33f333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.signup-back-button:hover {
+  background-color: rgb(255, 255, 255, 0.05);
+}
+
+.signup-back-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Adjust the content-wrapper to account for the back button */
+.content-wrapper {
+  position: relative;
+  /* Keep your existing styles */
+}
+
+
+/* Add these styles to your existing SignUp.css file */
+
+/* Floating Label Input Styles */
+.signup-input-floating {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.signup-input-floating input {
+  width: 100%;
+  padding: 12px 15px;
+  height: 42px;
+  border-radius: 50px;
+  border: none;
+  background-color: #90BE56;
+  color: #000;
+  font-family: 'Playpen Sans', cursive;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.signup-input-floating label {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: 0.2s ease all;
+}
+
+.signup-input-floating input:focus ~ label,
+.signup-input-floating input:not(:placeholder-shown) ~ label {
+  top: 0;
+  left: 20px;
+  font-size: 0.85rem;
+  padding: 0 5px;
+  background-color: #90BE56;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* For phone input with country code */
+.signup-phone-input-container {
+  position: relative;
+}
+
+.signup-phone-input-container .signup-country-code {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #000;
+  font-family: 'Playpen Sans', cursive;
+  font-size: 1.1rem;
+  z-index: 2;
+  line-height: 1;
+}
+
+.signup-phone-input-container input {
+  padding-left: 60px;
+}
+
+.signup-phone-input-floating label {
+  left: 60px;
+}
+
+/* For error states */
+.signup-input-floating.input-error input {
+  border: 1px solid #ff6b6b;
+}
+
+.signup-error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  padding-left: 15px;
+}
+
+/* Ensure placeholder is invisible but keeps space */
+.signup-input-floating {
+  position: relative;
+  margin-bottom: 30px; /* Add space for the help text */
+}
+
+.signup-referrer-tag {
+  color: #76D343;
+  font-size: 0.8rem;
+  margin-left: 5px;
+  font-style: italic;
+}
+
+.signup-help-text {
+  color: #9CA3AF;
+  font-size: 0.8rem;
+  position: absolute;
+  left: 15px;
+  bottom: -18px; /* Adjust as needed */
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.signup-referrer-readonly {
+  background-color: rgba(144, 190, 86, 0.8) !important;
+  cursor: not-allowed;
+}

@@ -1,0 +1,348 @@
+/* CryptoTracker.css */
+.crypto-tracker {
+  
+  
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.crypto-tracker h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.crypto-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.crypto-card {
+  background-color: #121212;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.crypto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.crypto-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.crypto-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-right: 16px;
+  background: linear-gradient(135deg, #333333, #1a1a1a);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.crypto-card:hover .crypto-logo {
+  transform: scale(1.05);
+}
+
+/* Custom colors for each cryptocurrency logo */
+.crypto-card:nth-child(1) .crypto-logo {
+  background: linear-gradient(135deg, #f7931a, #cd7f32);
+  color: #ffffff;
+}
+
+.crypto-card:nth-child(2) .crypto-logo {
+  background: linear-gradient(135deg, #627eea, #3c3c3d);
+  color: #ffffff;
+}
+
+.crypto-card:nth-child(3) .crypto-logo {
+  background: linear-gradient(135deg, #14f195, #9945ff);
+  color: #ffffff;
+}
+
+.crypto-card:nth-child(4) .crypto-logo {
+  background: linear-gradient(135deg, #6b53ff, #aa47bc);
+  color: #ffffff;
+}
+
+.crypto-info h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.crypto-symbol {
+  color: #8a8a8a;
+  font-size: 14px;
+  margin: 4px 0 0 0;
+}
+
+.crypto-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.price-value {
+  font-size: 24px;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.crypto-card:hover .price-value {
+  color: #ffffff;
+}
+
+.price-change {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.price-change.positive {
+  color: #00ff9d;
+  background-color: rgba(0, 255, 157, 0.1);
+}
+
+.price-change.negative {
+  color: #ff4343;
+  background-color: rgba(255, 67, 67, 0.1);
+}
+
+.crypto-card:hover .price-change.positive {
+  background-color: rgba(0, 255, 157, 0.15);
+}
+
+.crypto-card:hover .price-change.negative {
+  background-color: rgba(255, 67, 67, 0.15);
+}
+
+.chart-container {
+  position: relative;
+  margin-top: 20px;
+  height: 180px;
+  overflow: visible;
+}
+
+.chart {
+  width: 100%;
+  height: 150px;
+  transition: all 0.3s ease;
+  overflow: visible;
+}
+
+.chart polyline {
+  transition: stroke-width 0.3s ease;
+}
+
+.chart:hover polyline {
+  stroke-width: 3;
+}
+
+.chart path {
+  transition: opacity 0.3s ease;
+}
+
+.chart:hover path {
+  opacity: 0.3;
+}
+
+.chart circle {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.chart circle.selected {
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+.chart circle.hovered {
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+.chart circle:hover {
+  filter: brightness(1.3) drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+.price-tooltip {
+  position: absolute;
+  background: rgba(18, 18, 18, 0.95);
+  padding: 12px;
+  min-width: 120px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  transform: translateY(-5px);
+}
+
+.price-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.price-tooltip strong {
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.price-tooltip .positive {
+  color: #00ff9d;
+}
+
+.price-tooltip .negative {
+  color: #ff4343;
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  font-size: 12px;
+  color: #6e6e6e;
+}
+
+.chart-label {
+  flex: 1;
+  text-align: center;
+  padding: 4px 2px;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.chart-label.active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
+
+/* Loading and error states */
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #8a8a8a;
+  border-radius: 12px;
+  background-color: #121212;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.error {
+  color: #ff4343;
+  animation: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .crypto-container {
+    grid-template-columns: 1fr;
+  }
+
+  .crypto-tracker {
+    padding: 16px;
+  }
+
+  .crypto-card {
+    padding: 16px;
+  }
+
+  .crypto-logo {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .crypto-info h2 {
+    font-size: 18px;
+  }
+
+  .price-value {
+    font-size: 20px;
+  }
+
+  .price-change {
+    font-size: 14px;
+  }
+}
+
+/* Animation for chart data points on load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart circle {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.chart circle:nth-child(1) { animation-delay: 0.05s; }
+.chart circle:nth-child(2) { animation-delay: 0.1s; }
+.chart circle:nth-child(3) { animation-delay: 0.15s; }
+.chart circle:nth-child(4) { animation-delay: 0.2s; }
+.chart circle:nth-child(5) { animation-delay: 0.25s; }
+.chart circle:nth-child(6) { animation-delay: 0.3s; }
+.chart circle:nth-child(7) { animation-delay: 0.35s; }
+
+/* Subtle card reveal animation on load */
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.crypto-card {
+  animation: cardReveal 0.5s ease-out forwards;
+}
+
+.crypto-card:nth-child(1) { animation-delay: 0.1s; }
+.crypto-card:nth-child(2) { animation-delay: 0.2s; }
+.crypto-card:nth-child(3) { animation-delay: 0.3s; }
+.crypto-card:nth-child(4) { animation-delay: 0.4s; }

@@ -1,0 +1,31 @@
+.button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #33f333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.button:hover {
+  background-color: rgb(255, 255, 255, 0.05);
+}
+
+.button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Adjust the content-wrapper to account for the back button */
+.content-wrapper {
+  position: relative;
+  /* Keep your existing styles */
+}

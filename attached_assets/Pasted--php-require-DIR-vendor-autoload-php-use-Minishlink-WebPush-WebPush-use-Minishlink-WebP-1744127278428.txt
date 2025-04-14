@@ -1,0 +1,165 @@
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit(0);
+}
+
+// Set error logging
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
+// Read the notification data
+$data = json_decode(file_get_contents('php://input'), true);
+
+if (!isset($data['title']) || !isset($data['body'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing notification data']);
+    exit;
+}
+
+// VAPID keys
+$auth = array(
+    'VAPID' => array(
+        'subject' => 'mailto:me@example.com',
+        'publicKey' => 'BJrydm1aMTGQPSCTbh3OoPxGEcK2N00UlCL8oPuu9THDMomCTdyPOacATELouVKvjg1J1vv-RNfX4ZnGznHOwhQ',
+        'privateKey' => 'RtFaoBXI-OSiIdPy-RfvU2FJquhw0CtR439G5YfUhSU'
+    ),
+);
+
+// Configure WebPush with more detailed options
+$webPush = new WebPush($auth);
+$webPush->setReuseVAPIDHeaders(true);
+$webPush->setAutomaticPadding(true);
+
+// Get subscriptions
+$subscriptionsFile = 'subscriptions.json';
+if (!file_exists($subscriptionsFile)) {
+    http_response_code(404);
+    echo json_encode(['error' => 'No subscribers found']);
+    exit;
+}
+
+// Load subscriptions file
+$fileContents = file_get_contents($subscriptionsFile);
+if (!$fileContents) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to read subscriptions file']);
+    exit;
+}
+
+$subscriptions = json_decode($fileContents, true);
+if (json_last_error() !== JSON_ERROR_NONE) {
+    error_log('JSON decode error: ' . json_last_error_msg());
+    http_response_code(500);
+    echo json_encode(['error' => 'Invalid subscriptions format']);
+    exit;
+}
+
+try {
+    if (empty($subscriptions)) {
+        echo json_encode(['message' => 'No active subscriptions found', 'success' => 0, 'failed' => 0]);
+        exit;
+    }
+
+    // Count valid subscriptions
+    $validSubscriptions = 0;
+
+    foreach ($subscriptions as $index => $subscription) {
+        // Validate subscription format
+        if (!isset($subscription['endpoint']) || 
+            !isset($subscription['keys']['p256dh']) || 
+            !isset($subscription['keys']['auth'])) {
+            error_log('Invalid subscription format at index ' . $index);
+            continue; // Skip invalid subscriptions
+        }
+
+        $validSubscriptions++;
+
+        try {
+            $sub = Subscription::create([
+                'endpoint' => $subscription['endpoint'],
+                'publicKey' => $subscription['keys']['p256dh'],
+                'authToken' => $subscription['keys']['auth']
+            ]);
+
+            $payload = json_encode([
+                'title' => $data['title'],
+                'body' => $data['body'],
+                'icon' => isset($data['image']) ? $data['image'] : 'icon-192x192.png',
+                'badge' => 'icon-192x192.png',
+                'sound' => 'notification-sound.mp3',
+                'timestamp' => time(),
+                'image' => isset($data['image']) ? $data['image'] : null,
+                'url' => isset($data['url']) ? $data['url'] : '/'
+            ]);
+
+            $webPush->queueNotification($sub, $payload);
+        } catch (Exception $e) {
+            error_log('Error queueing notification: ' . $e->getMessage());
+            // Continue with other subscriptions
+        }
+    }
+
+    if ($validSubscriptions === 0) {
+        echo json_encode(['message' => 'No valid subscriptions found', 'success' => 0, 'failed' => 0]);
+        exit;
+    }
+
+    // Send notifications
+    $reports = $webPush->flush();
+    $successCount = 0;
+    $failureCount = 0;
+    $failedEndpoints = [];
+
+    if (!empty($reports)) {
+        foreach ($reports as $report) {
+            if ($report->isSuccess()) {
+                $successCount++;
+            } else {
+                $failureCount++;
+                $endpoint = $report->getEndpoint();
+                $reason = $report->getReason();
+                error_log("Notification failed: $reason for endpoint: $endpoint");
+                $failedEndpoints[] = $endpoint;
+            }
+        }
+
+        // Return appropriate response
+        if ($successCount > 0) {
+            echo json_encode([
+                'message' => 'Notifications sent successfully',
+                'success' => $successCount,
+                'failed' => $failureCount
+            ]);
+        } else {
+            echo json_encode([
+                'error' => 'Failed to send all notifications',
+                'failed' => $failureCount,
+                'message' => 'No notifications could be delivered. Check server logs for details.'
+            ]);
+        }
+    } else {
+        echo json_encode([
+            'message' => 'No reports returned from push service',
+            'success' => 0,
+            'failed' => 0
+        ]);
+    }
+} catch (Exception $e) {
+    error_log('WebPush error: ' . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'Error sending notification: ' . $e->getMessage(),
+        'message' => 'Server error occurred while sending notifications'
+    ]);
+}
+?>

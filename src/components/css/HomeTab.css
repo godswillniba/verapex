@@ -1,0 +1,27 @@
+
+.market-trackers {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: transparent;
+}
+
+.market-trackers .crypto-tracker,
+.market-trackers .stock-tracker {
+  background: var(--background-secondary);
+  margin: 0;
+  box-shadow: none;
+}
+
+.market-trackers .crypto-card,
+.market-trackers .stock-card {
+  background: var(--background-primary);
+}
+
+@media (max-width: 768px) {
+  .market-trackers {
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+  }
+}
