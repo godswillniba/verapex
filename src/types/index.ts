@@ -1,4 +1,3 @@
-
 export type TabName = 'home' | 'investments' | 'tasks' | 'referrals' | 'withdrawals';
 
 export interface Task {
@@ -23,4 +22,16 @@ export interface UserData {
   photoURL?: string;
   profileImage?: string;
   createdAt?: any;
+}
+
+// Adding the missing HomeTabProps interface
+export interface HomeTabProps {
+  data: {
+    graphData: Array<{
+      date: string;
+      value: number;
+    }>;
+  };
+  showBalance: boolean;
+  setShowBalance: (show: boolean) => void;
 }
