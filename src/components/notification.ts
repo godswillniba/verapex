@@ -29,11 +29,11 @@ export async function requestNotificationPermission(): Promise<void> {
       try {
         await setupNotificationSubscription();
       } catch (error) {
-        console.error('Subscription error:', error);
+        console.error('Subscription error:', error as Error);
       }
     }
   } catch (error) {
-    console.error('Permission error:', error);
+    console.error('Permission error:', error as Error);
   }
 }
 
@@ -45,13 +45,13 @@ export async function handleNotificationClick(): Promise<void> {
       try {
         await setupNotificationSubscription();
       } catch (error) {
-        console.error('Subscription error:', error);
+        console.error('Subscription error:', error as Error);
       }
     } else if (permission === 'denied') {
       console.log('Notification permission denied');
     }
   } catch (error) {
-    console.error('Permission error:', error);
+    console.error('Permission error:', error as Error);
   }
 }
 
@@ -108,7 +108,7 @@ async function registerPushSubscription(): Promise<PushSubscription | null> {
     return subscription;
   } catch (error) {
     console.error('Error creating push subscription:', error);
-    throw new Error('Failed to create push subscription: ' + error.message);
+    throw new Error('Failed to create push subscription: ' + (error as Error).message);
   }
 }
 
@@ -129,7 +129,7 @@ async function saveSubscription(subscription: PushSubscription): Promise<{ succe
     return await response.json();
   } catch (error) {
     console.error('Error saving subscription:', error);
-    throw new Error('Failed to save subscription: ' + error.message);
+    throw new Error('Failed to save subscription: ' + (error as Error).message);
   }
 }
 
