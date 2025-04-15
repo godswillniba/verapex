@@ -22,59 +22,8 @@ import { isPWA, handleNotificationClick } from '../components/notification';
 
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 
-// Define user data interface
-interface UserData {
-  uid?: string;
-  name?: string;
-  email?: string;
-  photoURL?: string;
-  profileImage?: string;
-  isEmailVerified?: boolean;
-  phone?: string;
-  createdAt?: { seconds: number };
-  isProfileVerified?: boolean;
-  referrals?: {
-    code?: string;
-    link?: string;
-  };
-  balance?: {
-    total?: number;
-  };
-  currency?: string;
-  notifications?: {
-    items?: Array<{
-      message: string;
-      timestamp: Date;
-      date: string;
-    }>;
-  };
-}
-
-// Define prop interfaces for each component
-interface HomeTabProps {
-  data?: UserData;
-  showBalance: boolean;
-  setShowBalance: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface TasksTabProps {
-  data?: UserData;
-}
-
-interface ReferralsTabProps {
-  data?: UserData;
-}
-
-interface WithdrawalTabProps {
-  data?: UserData;
-}
-
-interface InvestmentTabProps {
-  data?: UserData;
-}
-
 // Define TabName type
-type TabName = 'home' | 'tasks' | 'referrals' | 'withdrawal' | 'investment';
+
 
 const FinanceApp: React.FC = () => {
   const [showQRCode, setShowQRCode] = useState(false);
@@ -83,7 +32,7 @@ const FinanceApp: React.FC = () => {
   const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const toggleQRCode = () => setShowQRCode((prev) => !prev);
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData, setUserData] = useState<any>(null);
   const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false);
   const [isUserNotificationModalOpen, setIsUserNotificationModalOpen] = useState(false);
   const [isProfileSheetOpen, setIsProfileSheetOpen] = useState(false);
@@ -257,7 +206,7 @@ const FinanceApp: React.FC = () => {
 
           <div className="info-item">
             <label>Email:</label>
-            <p>{maskData(userData?.email || '', 'email')}</p>
+            <p>{maskData(userData?.email, 'email')}</p>
             <span className="verification-status">
               {userData?.isEmailVerified ? '✓ Verified' : '⚠ Unverified'}
             </span>
@@ -405,7 +354,7 @@ const FinanceApp: React.FC = () => {
           tabIndex={0}
         >
           <Bell className="icon" />
-          <div className="notification-badge">{/*userData?.notifications?.count*/}</div> 
+          <div className="notification-badge">{/*data.notifications.count*/}</div> 
         </div>
       </div>
 
