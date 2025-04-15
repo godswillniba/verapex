@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Bell, Home, FileText, Users, DollarSign, TrendingUp, LogOut, X } from 'lucide-react';
+import { TabName } from '../types';
 import BottomSheet from '../components/BottomSheet';
 
 import { ToastContainer } from "react-toastify";
