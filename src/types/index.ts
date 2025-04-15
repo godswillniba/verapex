@@ -39,7 +39,7 @@ export interface HomeTabProps {
 
 // Adding the missing InvestmentTabProps interface
 export interface InvestmentTabProps {
-  // Add any props if needed, or leave it empty if the component doesn't receive props
+  data: any;
 }
 
 // Adding the missing ReferralItem interface
