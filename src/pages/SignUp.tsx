@@ -294,12 +294,12 @@ const SignUp: React.FC = () => {
               result.error || "Failed to create account. Please try again.",
             );
           }
-        } catch (error) {
+        } catch (error: any) {
           console.error("Error creating account:", error);
           console.error("Error details:", {
-            name: error.name,
-            message: error.message,
-            stack: error.stack,
+            name: error?.name,
+            message: error?.message,
+            stack: error?.stack,
           });
           setErrorMessage(
             "An unexpected error occurred. Please try again later.",
