@@ -1,5 +1,5 @@
 
-import { FinanceData } from '../types';
+import { FinanceData } from '../types/finance.types';
 
 export const THEME = {
   primary: '#90BE56',
@@ -7,4 +7,3 @@ export const THEME = {
   background: '#0A0301',
   text: '#FFFFFF'
 };
-
