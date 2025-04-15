@@ -5,6 +5,7 @@ export interface Task {
   title: string;
   completed: boolean;
   reward: number;
+  description?: string; // Added description field based on TasksTab usage
 }
 
 export interface Refer {
@@ -34,4 +35,17 @@ export interface HomeTabProps {
   };
   showBalance: boolean;
   setShowBalance: (show: boolean) => void;
+}
+
+// Adding the missing InvestmentTabProps interface
+export interface InvestmentTabProps {
+  // Add any props if needed, or leave it empty if the component doesn't receive props
+}
+
+// Adding the missing ReferralItem interface
+export interface ReferralItem {
+  id: string;
+  name: string;
+  date: string;
+  amount: number;
 }
