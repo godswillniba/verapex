@@ -7,8 +7,9 @@ import { authStateListener } from "../../firebase/auth";
 import { listenToUserData } from "../../firebase/firestore";
 import { formatAmount } from '../utils/formatters';
 
+
 // Define interfaces for type safety
-import { ReferralItem } from '../types';
+import { Refer, ReferralItem } from '../types';
 
 const ReferralsTab: React.FC = () => {
   const [userData, setUserData] = useState<DocumentData | null>(null);
