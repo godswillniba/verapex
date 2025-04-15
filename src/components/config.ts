@@ -1,5 +1,5 @@
 
-import { FinanceData } from './types';
+import { FinanceData } from '../types';
 
 export const THEME = {
   primary: '#90BE56',
