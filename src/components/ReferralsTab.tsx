@@ -145,7 +145,7 @@ const ReferralsTab: React.FC = () => {
               className="share-button"
               onClick={() => {
                 triggerVibration();
-                if (navigator.share && referrals.link && referrals.code) {
+                if (typeof navigator.share === 'function' && referrals.link && referrals.code) {
                   navigator.share({
                     title: "Join and Earn Rewards!",
                     text: `Use my referral code: ${referrals.code}`,
