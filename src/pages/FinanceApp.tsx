@@ -22,7 +22,8 @@ import { isPWA, handleNotificationClick } from '../components/notification';
 
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 
-
+// Define TabName type
+type TabName = 'home' | 'tasks' | 'referrals' | 'withdrawal' | 'investment';
 
 const FinanceApp: React.FC = () => {
   const [showQRCode, setShowQRCode] = useState(false);
@@ -50,8 +51,6 @@ const FinanceApp: React.FC = () => {
     if (type === 'phone') {
       return data.slice(0, 5) + '*'.repeat(data.length - 7) + data.slice(-2);
     }
-
-
 
     return data;
   };
@@ -146,7 +145,6 @@ const FinanceApp: React.FC = () => {
             icon={faGear} 
             size="lg" 
             spin 
-
           />
 
       </button>
@@ -273,11 +271,10 @@ const FinanceApp: React.FC = () => {
           Notifications
           <FontAwesomeIcon icon={faBell} />
         </div>}
-        >
-
+      >
         <div className="notifications-sheet-content">
           {userData?.notifications?.items?.length > 0 ? (
-            userData.notifications.items.map((notification: { message: string; timestamp: Date }, index: number) => (
+            userData.notifications.items.map((notification: { message: string; timestamp: Date; date: string }, index: number) => (
               <div key={index} className="notification-item">
                 <div className="notification-text">{notification.message}</div>
                 <div className="notification-date">{notification.date}</div>
@@ -285,7 +282,6 @@ const FinanceApp: React.FC = () => {
             ))
           ) : (
             <>
-
               <div className="no-notifications">No notifications yet</div>
             </>
           )}
@@ -338,7 +334,6 @@ const FinanceApp: React.FC = () => {
           <img
             src={userData?.photoURL || userData?.profileImage || '/userImage/profile-pic.webp'}
             alt="Profile"
-
             onError={(e) => {
               console.log('Image failed to load:', e.currentTarget.src);
               e.currentTarget.src = '/userImage/profile-pic.webp';
@@ -386,7 +381,7 @@ const FinanceApp: React.FC = () => {
         onClose={() => setIsDepositSheetOpen(false)}
         title="Make a Deposit"
       >
-
+        {/* Deposit sheet content here */}
       </BottomSheet>
       <ToastContainer />
     </div>
