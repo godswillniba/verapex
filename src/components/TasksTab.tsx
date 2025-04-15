@@ -4,6 +4,7 @@ import { DocumentData } from 'firebase/firestore';
 import { authStateListener } from "../../firebase/auth";
 import { listenToUserData } from "../../firebase/firestore";
 import { formatAmount } from '../utils/formatters';
+import { Task } from '../types';
 
 
 
